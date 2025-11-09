@@ -273,8 +273,8 @@ class GameEngine:
         """处理夜晚行动结果"""
         deaths = []
 
-        # 狼人击杀
-        if night_actions.werewolf_kill and night_actions.werewolf_kill not in self.game_state.witch_saved:
+        # 狼人击杀 - 只有当女巫选择救人时才阻止死亡
+        if night_actions.werewolf_kill and night_actions.werewolf_kill != night_actions.witch_save:
             deaths.append(night_actions.werewolf_kill)
 
         # 女巫毒杀
